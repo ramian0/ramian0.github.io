@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麻花星空MV | 影像创作_星空视听社区平台</title>
+<meta name="description" content="麻花星空MV是面向创作者与观众的星空影像社区平台，聚合原创短片、音乐视觉与夜间拍摄作品，提供发布、交流与灵感发现。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#070a14;
+--bg2:#0c1120;
+--card:#111830;
+--card2:#151d38;
+--line:#232d4c;
+--txt:#e8ecf7;
+--dim:#98a2c0;
+--acc:#6b8cff;
+--acc2:#b88cff;
+--acc3:#45e0c0;
+--glow:0 0 40px rgba(107,140,255,.35);
+--r:16px;
+}
+html{scroll-behavior:smooth}
+body{
+background:var(--bg);
+color:var(--txt);
+font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+line-height:1.7;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+::selection{background:rgba(107,140,255,.4)}
+
+/* ============ 星光背景 ============ */
+.starfield{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.starfield .star{
+position:absolute;background:#fff;border-radius:50%;opacity:0;
+animation:twinkle var(--dur,4s) ease-in-out infinite;
+animation-delay:var(--delay,0s);
+}
+@keyframes twinkle{
+0%,100%{opacity:0;transform:scale(.6)}
+50%{opacity:var(--max,.8);transform:scale(1)}
+}
+.aurora{
+position:fixed;inset:0;z-index:0;pointer-events:none;
+background:
+radial-gradient(ellipse 60% 40% at 20% 0%,rgba(107,140,255,.18),transparent 60%),
+radial-gradient(ellipse 50% 40% at 85% 10%,rgba(184,140,255,.14),transparent 60%),
+radial-gradient(ellipse 60% 50% at 50% 100%,rgba(69,224,192,.08),transparent 65%);
+}
+main,header,footer{position:relative;z-index:1}
+
+/* ============ 布局 ============ */
+.wrap{width:min(1220px,92vw);margin:0 auto}
+section{padding:96px 0}
+.sec-head{margin-bottom:52px;max-width:760px}
+.eyebrow{
+display:inline-flex;align-items:center;gap:8px;
+font-size:13px;letter-spacing:.22em;color:var(--acc3);
+text-transform:uppercase;margin-bottom:16px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--acc3);opacity:.8}
+h2{font-size:clamp(26px,3.4vw,40px);line-height:1.28;letter-spacing:.01em;font-weight:700}
+h2 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head p{color:var(--dim);margin-top:16px;font-size:16px}
+
+/* ============ 顶部导航 ============ */
+header{
+position:sticky;top:0;z-index:50;
+background:rgba(7,10,20,.72);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(35,45,76,.6);
+transition:background .3s;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:.02em}
+.logo .mark{
+width:34px;height:34px;border-radius:10px;
+background:linear-gradient(135deg,var(--acc),var(--acc2));
+display:grid;place-items:center;
+box-shadow:var(--glow);
+}
+.logo .mark svg{width:20px;height:20px}
+.nav-links{display:flex;gap:34px;font-size:15px;color:var(--dim)}
+.nav-links a{position:relative;padding:6px 0;transition:color .25s}
+.nav-links a::after{
+content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+background:linear-gradient(90deg,var(--acc),var(--acc3));
+transition:width .3s;border-radius:2px;
+}
+.nav-links a:hover{color:var(--txt)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+padding:10px 22px;border-radius:999px;font-size:14px;font-weight:600;
+background:linear-gradient(135deg,var(--acc),var(--acc2));
+color:#fff;border:none;cursor:pointer;
+box-shadow:0 6px 24px rgba(107,140,255,.3);transition:transform .25s,box-shadow .25s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(107,140,255,.45)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:22px;height:2px;background:var(--txt);border-radius:2px;transition:.3s}
+
+/* ============ Hero ============ */
+.hero{padding:88px 0 104px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero h1{
+font-size:clamp(38px,5.6vw,72px);
+line-height:1.08;font-weight:800;letter-spacing:-.01em;
+margin-bottom:24px;
+}
+.hero h1 .g{
+background:linear-gradient(100deg,#8fa8ff,#c9a6ff 45%,#5fe3c8);
+-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero .lead{color:var(--dim);font-size:17px;max-width:520px;margin-bottom:34px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:44px}
+.btn{
+display:inline-flex;align-items:center;gap:9px;padding:14px 28px;
+border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;
+border:1px solid transparent;transition:.28s;
+}
+.btn-primary{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;box-shadow:0 10px 34px rgba(107,140,255,.34)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 44px rgba(107,140,255,.5)}
+.btn-ghost{border-color:var(--line);color:var(--txt);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--acc);color:#fff;background:rgba(107,140,255,.1)}
+.btn svg{width:17px;height:17px}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px}
+.hero-stats b{display:block;font-size:26px;font-weight:800;letter-spacing:-.01em}
+.hero-stats span{font-size:13px;color:var(--dim);letter-spacing:.04em}
+
+/* Hero player */
+.player-shell{
+position:relative;border-radius:22px;overflow:hidden;
+background:linear-gradient(160deg,#131b34,#0a0f20);
+border:1px solid var(--line);
+box-shadow:0 30px 80px rgba(0,0,0,.55),var(--glow);
+}
+.player-screen{position:relative;aspect-ratio:16/10;overflow:hidden;background:#05070f}
+.player-screen svg{width:100%;height:100%;display:block}
+.player-screen .scan{
+position:absolute;inset:0;pointer-events:none;
+background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px);
+mix-blend-mode:overlay;
+}
+.play-btn{
+position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+width:76px;height:76px;border-radius:50%;border:none;cursor:pointer;
+background:rgba(255,255,255,.12);backdrop-filter:blur(10px);
+display:grid;place-items:center;transition:.3s;
+box-shadow:0 0 0 1px rgba(255,255,255,.2),0 10px 40px rgba(0,0,0,.5);
+}
+.play-btn:hover{transform:translate(-50%,-50%) scale(1.1);background:rgba(107,140,255,.5)}
+.play-btn svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+.player-meta{
+display:flex;justify-content:space-between;align-items:center;
+padding:16px 20px;border-top:1px solid var(--line);
+background:rgba(9,13,26,.8);font-size:13px;color:var(--dim);
+}
+.player-meta strong{color:var(--txt);font-weight:600}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc3);margin-right:7px;box-shadow:0 0 10px var(--acc3);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.float-card{
+position:absolute;padding:12px 16px;border-radius:14px;
+background:rgba(17,24,48,.85);border:1px solid var(--line);
+backdrop-filter:blur(14px);font-size:13px;box-shadow:0 14px 40px rgba(0,0,0,.5);
+}
+.float-card.a{left:-26px;top:22%;animation:float1 7s ease-in-out infinite}
+.float-card.b{right:-22px;bottom:16%;animation:float2 8s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}
+.float-card b{display:block;color:var(--txt);font-size:15px;margin-bottom:2px}
+.float-card .mini-bar{width:110px;height:4px;border-radius:4px;background:rgba(255,255,255,.1);margin-top:8px;overflow:hidden}
+.float-card .mini-bar i{display:block;height:100%;width:68%;border-radius:4px;background:linear-gradient(90deg,var(--acc),var(--acc3))}
+
+/* ============ 栏目标签 ============ */
+.chips{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.chip{
+padding:9px 20px;border-radius:999px;border:1px solid var(--line);
+background:rgba(255,255,255,.02);font-size:14px;color:var(--dim);
+cursor:pointer;transition:.25s;
+}
+.chip:hover{color:var(--txt);border-color:var(--acc)}
+.chip.active{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(107,140,255,.3)}
+
+/* ============ 作品网格 ============ */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.work{
+border-radius:var(--r);overflow:hidden;background:var(--card);
+border:1px solid var(--line);transition:.35s;cursor:pointer;position:relative;
+}
+.work:hover{transform:translateY(-6px);border-color:rgba(107,140,255,.55);box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.work-thumb{position:relative;aspect-ratio:16/10;overflow:hidden}
+.work-thumb svg{width:100%;height:100%;transition:transform .6s}
+.work:hover .work-thumb svg{transform:scale(1.08)}
+.work-thumb .tag{
+position:absolute;top:12px;left:12px;padding:4px 11px;border-radius:999px;
+font-size:11px;font-weight:600;letter-spacing:.06em;
+background:rgba(7,10,20,.72);backdrop-filter:blur(8px);
+border:1px solid rgba(255,255,255,.12);
+}
+.work-thumb .dur{
+position:absolute;bottom:12px;right:12px;padding:3px 10px;border-radius:6px;
+font-size:11px;background:rgba(0,0,0,.62);backdrop-filter:blur(6px);
+}
+.work-body{padding:18px 20px 20px}
+.work-body h3{font-size:16px;font-weight:600;margin-bottom:7px;line-height:1.4}
+.work-body p{font-size:13px;color:var(--dim);line-height:1.6;margin-bottom:14px}
+.work-foot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--dim);border-top:1px solid rgba(35,45,76,.7);padding-top:13px}
+.work-foot .author{display:flex;align-items:center;gap:8px}
+.avatar{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;color:#fff}
+.work-foot .meter{display:flex;align-items:center;gap:5px}
+.work-foot svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8}
+
+/* ============ 创作者 ============ */
+.creators{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.creator{
+padding:26px 22px;border-radius:var(--r);background:var(--card);
+border:1px solid var(--line);text-align:center;transition:.3s;
+}
+.creator:hover{transform:translateY(-5px);border-color:rgba(184,140,255,.5);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.creator .av{
+width:70px;height:70px;border-radius:50%;margin:0 auto 15px;
+display:grid;place-items:center;font-size:24px;font-weight:800;color:#fff;
+position:relative;
+}
+.creator .av::after{
+content:"";position:absolute;inset:-4px;border-radius:50%;
+border:2px solid transparent;background:linear-gradient(135deg,var(--acc),var(--acc2)) border-box;
+-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+-webkit-mask-composite:xor;mask-composite:exclude;
+opacity:.7;
+}
+.creator h4{font-size:16px;font-weight:600;margin-bottom:5px}
+.creator .role{font-size:12px;color:var(--acc3);letter-spacing:.08em;margin-bottom:12px}
+.creator p{font-size:13px;color:var(--dim);line-height:1.6;margin-bottom:14px;min-height:42px}
+.creator .follow{
+display:inline-block;padding:6px 18px;border-radius:999px;font-size:12px;
+border:1px solid var(--line);color:var(--dim);transition:.25s;
+}
+.creator:hover .follow{border-color:var(--acc);color:#fff;background:rgba(107,140,255,.15)}
+
+/* ============ 数据条 ============ */
+.metrics{background:linear-gradient(180deg,rgba(17,24,48,.6),rgba(7,10,20,0));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:56px 0}
+.metric{text-align:center;position:relative}
+.metric:not(:last-child)::after{
+content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);
+width:1px;height:56%;background:var(--line);
+}
+.metric b{display:block;font-size:clamp(28px,3.4vw,44px);font-weight:800;letter-spacing:-.02em;
+background:linear-gradient(120deg,#fff,#9fb2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric span{font-size:13px;color:var(--dim);letter-spacing:.06em}
+
+/* ============ 专题时间线 ============ */
+.timeline{position:relative;padding-left:36px}
+.timeline::before{
+content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;
+background:linear-gradient(180deg,var(--acc),var(--acc2),transparent);opacity:.55;
+}
+.tl-item{position:relative;padding-bottom:42px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+content:"";position:absolute;left:-33px;top:6px;width:14px;height:14px;border-radius:50%;
+background:var(--bg);border:2px solid var(--acc);box-shadow:0 0 0 4px rgba(107,140,255,.13);
+}
+.tl-item .date{font-size:12px;letter-spacing:.14em;color:var(--acc3);margin-bottom:8px}
+.tl-item h4{font-size:18px;font-weight:600;margin-bottom:8px}
+.tl-item p{color:var(--dim);font-size:14px;max-width:640px}
+
+/* ============ 会员 / 订阅 ============ */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.plan{
+padding:34px 28px;border-radius:20px;background:var(--card);
+border:1px solid var(--line);display:flex;flex-direction:column;transition:.3s;position:relative;
+}
+.plan:hover{transform:translateY(-6px);border-color:rgba(107,140,255,.5)}
+.plan.hot{
+background:linear-gradient(170deg,rgba(107,140,255,.16),rgba(184,140,255,.08));
+border-color:rgba(107,140,255,.6);box-shadow:0 0 60px rgba(107,140,255,.18);
+}
+.plan.hot::before{
+content:"最受欢迎";position:absolute;top:-12px;left:28px;
+padding:4px 14px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.06em;
+background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;
+}
+.plan h3{font-size:17px;font-weight:600;margin-bottom:6px}
+.plan .sub{font-size:13px;color:var(--dim);margin-bottom:22px}
+.plan .price{font-size:38px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.plan .price small{font-size:14px;font-weight:500;color:var(--dim);letter-spacing:0}
+.plan ul{margin:24px 0 28px;flex:1}
+.plan li{
+font-size:14px;color:var(--dim);padding:8px 0;display:flex;align-items:flex-start;gap:9px;
+}
+.plan li svg{width:15px;height:15px;flex-shrink:0;margin-top:5px;stroke:var(--acc3);fill:none;stroke-width:2.4}
+.plan .btn{width:100%;justify-content:center}
+
+/* ============ 社区动态 ============ */
+.community-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.post-list{display:flex;flex-direction:column;gap:14px}
+.post{
+display:flex;gap:15px;padding:18px 20px;border-radius:14px;
+background:var(--card);border:1px solid var(--line);transition:.25s;
+}
+.post:hover{border-color:rgba(107,140,255,.45);transform:translateX(4px)}
+.post .pav{
+width:40px;height:40px;border-radius:50%;flex-shrink:0;
+display:grid;place-items:center;font-weight:700;font-size:14px;color:#fff;
+}
+.post .pc{flex:1;min-width:0}
+.post .phead{display:flex;align-items:center;gap:9px;margin-bottom:5px;flex-wrap:wrap}
+.post .phead b{font-size:14px;font-weight:600}
+.post .phead span{font-size:11px;color:var(--dim)}
+.post p{font-size:13px;color:var(--dim);line-height:1.65}
+.post .pact{display:flex;gap:18px;margin-top:10px;font-size:12px;color:var(--dim)}
+.post .pact span{display:flex;align-items:center;gap:5px;cursor:pointer;transition:.2s}
+.post .pact span:hover{color:var(--acc)}
+.side-card{
+padding:26px;border-radius:16px;background:var(--card);border:1px solid var(--line);
+margin-bottom:20px;
+}
+.side-card h4{font-size:15px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.side-card h4::before{content:"";width:3px;height:15px;border-radius:2px;background:linear-gradient(180deg,var(--acc),var(--acc3))}
+.rank{display:flex;flex-direction:column;gap:14px}
+.rank-item{display:flex;align-items:center;gap:12px;font-size:13px}
+.rank-item .no{
+width:22px;height:22px;border-radius:7px;display:grid;place-items:center;
+font-size:11px;font-weight:700;background:rgba(107,140,255,.14);color:var(--acc);
+flex-shrink:0;
+}
+.rank-item:nth-child(1) .no{background:linear-gradient(135deg,#ffd76b,#ffb347);color:#241a00}
+.rank-item:nth-child(2) .no{background:linear-gradient(135deg,#d3dcff,#9fb2ff);color:#101a36}
+.rank-item:nth-child(3) .no{background:linear-gradient(135deg,#f0b48a,#d98d5c);color:#2e1600}
+.rank-item .rt{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-item .rv{font-size:11px;color:var(--dim);flex-shrink:0}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:9px}
+.tag-cloud span{
+font-size:12px;padding:6px 13px;border-radius:999px;
+background:rgba(107,140,255,.08);border:1px solid rgba(107,140,255,.2);
+color:#aeb9dc;cursor:pointer;transition:.2s;
+}
+.tag-cloud span:hover{background:rgba(107,140,255,.22);color:#fff;border-color:var(--acc)}
+
+/* ============ FAQ ============ */
+.faq{max-width:840px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+width:100%;background:none;border:none;color:var(--txt);text-align:left;
+padding:22px 40px 22px 0;font-size:16px;font-weight:500;cursor:pointer;
+position:relative;font-family:inherit;transition:color .25s;
+}
+.faq-q:hover{color:var(--acc)}
+.faq-q::after{
+content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);
+font-size:24px;font-weight:300;color:var(--acc);transition:.3s;
+}
+.faq-item.open .faq-q::after{transform:translateY(-50%) rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;color:var(--dim);font-size:14px;line-height:1.8}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
+
+/* ============ CTA ============ */
+.cta-band{
+border-radius:26px;padding:64px 48px;text-align:center;position:relative;overflow:hidden;
+background:linear-gradient(140deg,rgba(107,140,255,.2),rgba(184,140,255,.12) 55%,rgba(69,224,192,.1));
+border:1px solid rgba(107,140,255,.35);
+}
+.cta-band::before{
+content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+background:radial-gradient(circle,rgba(107,140,255,.35),transparent 70%);
+top:-220px;left:50%;transform:translateX(-50%);filter:blur(30px);pointer-events:none;
+}
+.cta-band h2{position:relative;margin-bottom:14px}
+.cta-band p{color:var(--dim);margin-bottom:32px;position:relative;max-width:560px;margin-left:auto;margin-right:auto}
+.cta-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;max-width:520px;margin:0 auto}
+.cta-form input{
+flex:1;min-width:220px;padding:14px 20px;border-radius:999px;
+background:rgba(7,10,20,.6);border:1px solid var(--line);color:var(--txt);
+font-size:14px;font-family:inherit;outline:none;transition:.25s;
+}
+.cta-form input:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(107,140,255,.15)}
+.cta-form input::placeholder{color:#6d7899}
+.form-note{font-size:12px;color:var(--dim);margin-top:16px;position:relative}
+
+/* ============ Footer ============ */
+footer{border-top:1px solid var(--line);padding:64px 0 34px;background:rgba(5,7,15,.7)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.foot-brand p{color:var(--dim);font-size:13px;margin-top:16px;max-width:280px;line-height:1.8}
+.foot-social{display:flex;gap:10px;margin-top:20px}
+.foot-social a{
+width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+border:1px solid var(--line);color:var(--dim);transition:.25s;
+}
+.foot-social a:hover{border-color:var(--acc);color:#fff;background:rgba(107,140,255,.14)}
+.foot-social svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+.foot-col h5{font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--txt);margin-bottom:18px}
+.foot-col a{display:block;font-size:13px;color:var(--dim);padding:5px 0;transition:.2s}
+.foot-col a:hover{color:var(--acc)}
+.foot-bottom{
+border-top:1px solid var(--line);padding-top:26px;
+display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+font-size:12px;color:#6d7899;
+}
+.foot-bottom .links{display:flex;gap:22px}
+.foot-bottom .links a:hover{color:var(--txt)}
+
+/* ============ 滚动动效 ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ 响应式 ============ */
+@media(max-width:1024px){
+.hero-grid{grid-template-columns:1fr;gap:48px}
+.works{grid-template-columns:repeat(2,1fr)}
+.creators{grid-template-columns:repeat(2,1fr)}
+.plans{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+.community-grid{grid-template-columns:1fr}
+.foot-grid{grid-template-columns:1fr 1fr;gap:34px}
+.float-card.a{left:-10px}
+.float-card.b{right:-6px}
+}
+@media(max-width:720px){
+section{padding:68px 0}
+.nav-links{
+position:fixed;top:72px;left:0;right:0;flex-direction:column;gap:0;
+background:rgba(7,10,20,.97);border-bottom:1px solid var(--line);
+padding:10px 0;transform:translateY(-140%);transition:transform .35s ease;
+backdrop-filter:blur(20px);
+}
+.nav-links.show{transform:translateY(0)}
+.nav-links a{padding:14px 6vw;font-size:15px}
+.burger{display:flex}
+.nav-cta{display:none}
+.works{grid-template-columns:1fr}
+.creators{grid-template-columns:1fr 1fr}
+.hero-stats{gap:26px}
+.metric-grid{grid-template-columns:1fr 1fr;gap:32px;padding:44px 0}
+.metric:nth-child(2)::after{display:none}
+.foot-grid{grid-template-columns:1fr}
+.cta-band{padding:48px 24px}
+.timeline{padding-left:28px}
+.foot-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+<div class="aurora"></div>
+
+<header id="topbar">
+<div class="wrap nav">
+<a href="#top" class="logo">
+<span class="mark">
+<svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.6 6.6L21 11l-6.4 2.4L12 20l-2.6-6.6L3 11l6.4-2.4L12 2z" fill="#fff"/><circle cx="18.5" cy="18.5" r="1.6" fill="#fff" opacity=".8"/><circle cx="5" cy="5.5" r="1" fill="#fff" opacity=".7"/></svg>
+</span>
+麻花星空MV
+</a>
+<nav class="nav-links" id="navLinks">
+<a href="#works">作品广场</a>
+<a href="#creators">创作者</a>
+<a href="#topics">专题企划</a>
+<a href="#community">社区</a>
+<a href="#plans">会员</a>
+<a href="#faq">帮助</a>
+</nav>
+<button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView()">发布作品</button>
+<button class="burger" id="burger" aria-label="菜单"><span></span><span></span><span></span></button>
+</div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+<div class="wrap hero-grid">
+<div class="hero-copy reveal">
+<div class="eyebrow">星空影像 · 原创社区</div>
+<h1>麻花星空MV<span class="g">，让每一帧画面都有回声</span></h1>
+<p class="lead">我们相信影像不只是被观看的内容，而是一座可以住进去的夜空。麻花星空MV 汇聚独立导演、音乐视觉创作者与夜间摄影爱好者，从一镜到底的城市夜景到实验性的星轨短片，在这里被看见、被讨论、被延续。</p>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="document.getElementById('works').scrollIntoView()">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+开始探索作品
+</button>
+<button class="btn btn-ghost" onclick="document.getElementById('cta').scrollIntoView()">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+上传我的短片
+</button>
+</div>
+<div class="hero-stats">
+<div><b>12,800+</b><span>累计原创作品</span></div>
+<div><b>3,200+</b><span>认证创作者</span></div>
+<div><b>48 万</b><span>月度观看人次</span></div>
+</div>
+</div>
+
+<div class="hero-visual reveal">
+<div class="player-shell">
+<div class="player-screen">
+<svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-label="星空影像示意">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0a1030"/><stop offset=".55" stop-color="#101a3e"/><stop offset="1" stop-color="#1a1236"/>
+</linearGradient>
+<radialGradient id="neb" cx="50%" cy="40%" r="60%">
+<stop offset="0" stop-color="#6b8cff" stop-opacity=".5"/><stop offset="1" stop-color="#6b8cff" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="neb2" cx="80%" cy="70%" r="50%">
+<stop offset="0" stop-color="#b88cff" stop-opacity=".42"/><stop offset="1" stop-color="#b88cff" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="mt" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1b2450"/><stop offset="1" stop-color="#0a0e1e"/>
+</linearGradient>
+<linearGradient id="mt2" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#26305e"/><stop offset="1" stop-color="#0d1226"/>
+</linearGradient>
+</defs>
+<rect width="640" height="400" fill="url(#sky)"/>
+<rect width="640" height="400" fill="url(#neb)"/>
+<rect width="640" height="400" fill="url(#neb2)"/>
+<g fill="#fff">
+<circle cx="72" cy="52" r="1.6" opacity=".9"/><circle cx="140" cy="88" r="1.1" opacity=".7"/>
+<circle cx="220" cy="40" r="1.4" opacity=".85"/><circle cx="305" cy="72" r="1" opacity=".6"/>
+<circle cx="380" cy="36" r="1.7" opacity=".9"/><circle cx="455" cy="90" r="1.2" opacity=".7"/>
+<circle cx="530" cy="48" r="1.5" opacity=".85"/><circle cx="590" cy="112" r="1" opacity=".6"/>
+<circle cx="105" cy="140" r="1.1" opacity=".6"/><circle cx="255" cy="128" r="1.5" opacity=".8"/>
+<circle cx="410" cy="150" r="1" opacity=".55"/><circle cx="500" cy="168" r="1.4" opacity=".75"/>
+<circle cx="180" cy="196" r="1" opacity=".5"/><circle cx="345" cy="180" r="1.2" opacity=".7"/>
+<circle cx="620" cy="200" r="1.3" opacity=".7"/><circle cx="40" cy="220" r="1" opacity=".5"/>
+<circle cx="290" cy="240" r="1.1" opacity=".55"/><circle cx="470" cy="230" r="1" opacity=".5"/>
+</g>
+<g stroke="#9fb2ff" stroke-width="1" opacity=".35">
+<path d="M300 74l14 -6 -6 14 -14 6z" fill="#cfe0ff"/>
+<path d="M120 150l9 -4 -4 9 -9 4z" fill="#dbe6ff"/>
+</g>
+<path d="M0 300 L90 232 L160 282 L250 206 L330 268 L420 216 L510 280 L580 236 L640 286 L640 400 L0 400Z" fill="url(#mt)" opacity=".92"/>
+<path d="M0 336 L80 292 L170 330 L260 276 L360 326 L450 280 L540 330 L640 288 L640 400 L0 400Z" fill="url(#mt2)"/>
+<g opacity=".85">
+<circle cx="470" cy="112" r="20" fill="#e9ecff" opacity=".92"/>
+<circle cx="462" cy="106" r="4" fill="#c9d2f5" opacity=".6"/>
+<circle cx="478" cy="118" r="3" fill="#c9d2f5" opacity=".5"/>
+</g>
+<path d="M60 372 Q200 340 340 360 T620 344" stroke="#45e0c0" stroke-width="1.4" fill="none" opacity=".4"/>
+<path d="M0 392 Q160 366 320 382 T640 368" stroke="#6b8cff" stroke-width="1" fill="none" opacity=".35"/>
+</svg>
+<div class="scan"></div>
+<button class="play-btn" aria-label="播放预览" id="playBtn">
+<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</button>
+</div>
+<div class="player-meta">
+<span><strong>夜幕档案 · 第 07 期</strong> · 城市星轨特别企划</span>
+<span><i class="live-dot"></i>正在首映</span>
+</div>
+</div>
+<div class="float-card a">
+<b>本周新增 214 部</b>
+原创短片投稿
+<div class="mini-bar"><i></i></div>
+</div>
+<div class="float-card b">
+<b>画质 4K · HDR</b>
+支持高帧率预览
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= METRICS ================= -->
+<div class="metrics">
+<div class="wrap metric-grid">
+<div class="metric"><b data-count="12800">0</b><span>累计原创作品</span></div>
+<div class="metric"><b data-count="3200">0</b><span>认证创作者</span></div>
+<div class="metric"><b data-count="480000">0</b><span>月度观看人次</span></div>
+<div class="metric"><b data-count="96">0</b><span>合作品牌与机构</span></div>
+</div>
+</div>
+
+<!-- ================= WORKS ================= -->
+<section id="works">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">作品广场</div>
+<h2>在夜色里被点亮的<em>影像现场</em></h2>
+<p>从三分钟的城市漫游到实验性的星轨长镜，每一部作品都由创作者亲自上传、亲自校对。我们不做算法堆砌，只把真正有呼吸感的画面留在这里。</p>
+</div>
+
+<div class="chips reveal">
+<span class="chip active">全部</span>
+<span class="chip">星空摄影</span>
+<span class="chip">音乐视觉</span>
+<span class="chip">城市夜景</span>
+<span class="chip">实验短片</span>
+<span class="chip">纪录片</span>
+<span class="chip">动画</span>
+</div>
+
+<div class="works">
+
+<article class="work reveal">
+<div class="work-thumb">
+<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="w1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#141d44"/><stop offset="1" stop-color="#2a1a44"/></linearGradient></defs>
+<rect width="400" height="250" fill="url(#w1)"/>
+<circle cx="310" cy="60" r="30" fill="#f0f3ff" opacity=".9"/>
+<circle cx="300" cy="52" r="6" fill="#cdd6f5" opacity=".6"/>
+<g fill="#fff" opacity=".85">
+<circle cx="48" cy="40" r="1.5"/><circle cx="110" cy="70" r="1.1"/><circle cx="170" cy="34" r="1.3"/>
+<circle cx="230" cy="86" r="1"/><circle cx="360" cy="140" r="1.4"/><circle cx="80" cy="120" r="1.1"/>
+</g>
+<path d="M0 200 L70 160 L140 195 L220 150 L300 190 L370 158 L400 182 L400 250 L0 250Z" fill="#0c1226"/>
+<path d="M0 224 L90 196 L180 222 L270 192 L360 218 L400 204 L400 250 L0 250Z" fill="#070b18"/>
+</svg>
+<span class="tag">星空摄影</span><span class="dur">04:22</span>
+</div>
+<div class="work-body">
+<h3>银河落进城市的那一夜</h3>
+<p>在海拔两千米的山脊守了六小时，只为捕捉城市光污染与银河同时出现的那十八分钟。</p>
+<div class="work-foot">
+<span class="author"><span class="avatar" style="background:linear-gradient(135deg,#6b8cff,#b88cff)">星</span>星野阿岚</span>
+<span class="meter"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>8.6万</span>
+</div>
+</div>
+</article>
+
+<article class="work reveal">
+<div class="work-thumb">
+<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="w2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1138"/><stop offset="1" stop-color="#0d1a3a"/></linearGradient></defs>
+<rect width="400" height="250" fill="url(#w2)"/>
+<g stroke="#b88cff" stroke-width="1.6" opacity=".65" fill="none">
+<path d="M0 150 Q60 110 120 145 T240 138 T360 152 T400 146"/>
+<path d="M0 175 Q60 140 120 170 T240 162 T360 178 T400 170"/>
+<path d="M0 200 Q60 168 120 196 T240 188 T360 204 T400 196"/>
+</g>
+<g stroke="#45e0c0" stroke-width="1.2" opacity=".5" fill="none">
+<path d="M0 120 Q80 90 160 118 T320 110 T400 122"/>
+</g>
+<circle cx="200" cy="128" r="42" fill="none" stroke="#6b8cff" stroke-width="1" opacity=".5"/>
+<circle cx="200" cy="128" r="26" fill="none" stroke="#b88cff" stroke-width="1" opacity=".6"/>
+<circle cx="200" cy="128" r="6" fill="#e6ebff"/>
+</svg>
+<span class="tag">音乐视觉</span><span class="dur">03:48</span>
+</div>
+<div class="work-body">
+<h3>频率之外 · 声音的可视化实验</h3>
+<p>把一段现场录制的合成器即兴，拆解成三百二十条声波轨迹，再一帧帧重组成流动的星云。</p>
+<div class="work-foot">
+<span class="author"><span class="avatar" style="background:linear-gradient(135deg,#45e0c0,#6b8cff)">声</span>声场实验室</span>
+<span class="meter"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>6.2万</span>
+</div>
+</div>
+</article>
+
+<article class="work reveal">
+<div class="work-thumb">
+<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="w3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101a3a"/><stop offset="1" stop-color="#1e1230"/></linearGradient></defs>
+<rect width="400" height="250" fill="url(#w3)"/>
+<g fill="#0a0f20">
+<rect x="30" y="110" width="34" height="140"/><rect x="80" y="80" width="30" height="170"/>
+<rect x="126" y="130" width="40" height="120"/><rect x="182" y="96" width="28" height="154"/>
+<rect x="226" y="60" width="36" height="190"/><rect x="278" y="118" width="32" height="132"/>
+<rect x="326" y="88" width="26" height="162"/>
+</g>
+<g fill="#8fa8ff" opacity=".85">
+<rect x="36" y="122" width="5" height="8"/><rect x="48" y="140" width="5" height="8"/>
+<rect x="90" y="96" width="5" height="8"/><rect x="102" y="120" width="5" height="8"/>
+<rect x="136" y="146" width="5" height="8"/><rect x="152" y="132" width="5" height="8"/>
+<rect x="190" y="110" width="5" height="8"/><rect x="204" y="134" width="5" height="8"/>
+<rect x="236" y="78" width="5" height="8"/><rect x="248" y="110" width="5" height="8"/>
+<rect x="288" y="132" width="5" height="8"/><rect x="300" y="156" width="5" height="8"/>
+<rect x="334" y="102" width="5" height="8"/><rect x="344" y="128" width="5" height="8"/>
+</g>
+<circle cx="200" cy="40" r="18" fill="#e9ecff" opacity=".9"/>
+</svg>
+<span class="tag">城市夜景</span><span class="dur">05:10</span>
+</div>
+<div class="work-body">
+<h3>凌晨四点的天台与十二扇窗</h3>
+<p>用固定机位记录了同一片街区连续十二个凌晨，等待每一扇窗最后熄灭，再等第一盏灯亮起。</p>
+<div class="work-foot">
+<span class="author"><span class="avatar" style="background:linear-gradient(135deg,#ffb347,#b88cff)">夜</span>夜行观察员</span>
+<span class="meter"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>11.4万</span>
+</div>
+</div>
+</article>
+
+<article class="work reveal">
+<div class="work-thumb">
+<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+<defs><radialGradient id="w4" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#b88cff" stop-opacity=".8"/><stop offset="1" stop-color="#b88cff" stop-opacity="0"/></radialGradient></defs>
+<rect width="400" height="250" fill="#0a0d1c"/>
+<rect width="400" height="250" fill="url(#w4)"/>
+<g fill="none" stroke="#d9e2ff" stroke-width="1" opacity=".7">
+<ellipse cx="200" cy="125" rx="120" ry="48" transform="rotate(-18 200 125)"/>
+<ellipse cx="200" cy="125" rx="86" ry="34" transform="rotate(-18 200 125)"/>
+<ellipse cx="200" cy="125" rx="52" ry="20" transform="rotate(-18 200 125)"/>
+</g>
+<circle cx="200" cy="125" r="14" fill="#f0f3ff"/>
+<circle cx="286" cy="92" r="5" fill="#9fb2ff"/>
+<g fill="#fff" opacity=".8"><circle cx="60" cy="40" r="1.4"/><circle cx="340" cy="200" r="1.2"/><circle cx="120" cy="210" r="1"/></g>
+</svg>
+<span class="tag">实验短片</span><span class="dur">02:36</span>
+</div>
+<div class="work-body">
+<h3>轨道误差 · 一次失败的观测</h3>
+<p>因为一次曝光参数的偏差，原本清晰的星轨变成了螺旋。我把这个美丽的错误保留了下来。</p>
+<div class="work-foot">
+<span class="author"><span class="avatar" style="background:linear-gradient(135deg,#6b8cff,#45e0c0)">轨</span>轨道误差</span>
+<span class="meter"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>4.8万</span>
+</div>
+</div>
+</article>
+
+<article class="work reveal">
+<div class="work-thumb">
+<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="w5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1e2e"/><stop offset="1" stop-color="#12203f"/></linearGradient></defs>
+<rect width="400" height="250" fill="url(#w5)"/>
+<path d="M0 190 Q100 150 200 186 T400 172 L400 250 L0 250Z" fill="#071018"/>
+<g stroke="#45e0c0" stroke-width="1.2" fill="none" opacity=".55">
+<path d="M40 175 Q120 130 200 168 T360 152"/>
+<path d="M60 190 Q140 155 220 186 T380 172"/>
+</g>
+<g fill="#e8ecf7" opacity=".85">
+<circle cx="90" cy="60" r="1.6"/><circle cx="160" cy="42" r="1.2"/><circle cx="240" cy="70" r="1.5"/>
+<circle cx="320" cy="46" r="1.1"/><circle cx="360" cy="92" r="1.3"/>
+</g>
+<circle cx="70" cy="110" r="26" fill="#6b8cff" opacity=".22"/>
+<circle cx="70" cy="110" r="14" fill="#9fb2ff" opacity=".45"/>
+</svg>
+<span class="tag">纪录片</span><span class="dur">12:04</span>
+</div>
+<div class="work-body">
+<h3>守星人 · 高原观测站的一天</h3>
+<p>跟随三位天文观测员，在无人区记录他们的日常：校准设备、煮一锅面、等待云层散开。</p>
+<div class="work-foot">
+<span class="author"><span class="avatar" style="background:linear-gradient(135deg,#45e0c0,#b88cff)">守</span>远方放映室</span>
+<span class="meter"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>9.7万</span>
+</div>
+</div>
+</article>
+
+<article class="work reveal">
+<div class="work-thumb">
+<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="w6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#241640"/><stop offset="1" stop-color="#101a3a"/></linearGradient></defs>
+<rect width="400" height="250" fill="url(#w6)"/>
+<g fill="none" stroke-width="1.4" opacity=".8">
+<circle cx="140" cy="110" r="46" stroke="#b88cff"/>
+<circle cx="230" cy="140" r="60" stroke="#6b8cff" opacity=".7"/>
+<circle cx="300" cy="80" r="30" stroke="#45e0c0" opacity=".7"/>
+</g>
+<g fill="#e8ecf7">
+<circle cx="140" cy="110" r="5"/><circle cx="230" cy="140" r="6"/>
+<circle cx="300" cy="80" r="4"/>
+</g>
+<path d="M140 110 L230 140 L300 80" stroke="#ffffff" stroke-width=".8" fill="none" opacity=".35" stroke-dasharray="3 4"/>
+<g fill="#fff" opacity=".7"><circle cx="50" cy="200" r="1.2"/><circle cx="360" cy="210" r="1.1"/><circle cx="200" cy="30" r="1.3"/></g>
+</svg>
+<span class="tag">动画</span><span class="dur">06:18</span>
+</div>
+<div class="work-body">
+<h3>星座之间的第九封信</h3>
+<p>手绘逐帧完成的两分钟循环动画，用星座连线的方式讲一个关于等待和迟到回信的故事。</p>
+<div class="work-foot">
+<span class="author"><span class="avatar" style="background:linear-gradient(135deg,#b88cff,#ff9fb6)">绘</span>纸片星球</span>
+<span class="meter"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>7.3万</span>
+</div>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- ================= CREATORS ================= -->
+<section id="creators" style="padding-top:0">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">创作者</div>
+<h2>把镜头举向夜空的人<em>值得被记住</em></h2>
+<p>他们来自不同的城市，用各自的设备和对光的理解拍下这些画面。认领创作者主页，或者直接给他们发送一条合作消息。</p>
+</div>
+<div class="creators">
+
+<div class="creator reveal">
+<div class="av" style="background:linear-gradient(135deg,#6b8cff,#b88cff)">岚</div>
+<h4>星野阿岚</h4>
+<div class="role">星空摄影 · 成都</div>
+<p>专注高山银河与城市光害交界处的影像，坚持自然光拍摄，不使用后期合成天空。</p>
+<span class="follow">关注 · 4.2万粉</span>
+</div>
+
+<div class="creator reveal">
+<div class="av" style="background:linear-gradient(135deg,#45e0c0,#6b8cff)">声</div>
+<h4>声场实验室</h4>
+<div class="role">音乐视觉 · 上海</div>
+<p>声音与画面跨媒介团队，擅长把现场录音转译成可视化序列，作品常带强烈的节奏感。</p>
+<span class="follow">关注 · 3.6万粉</span>
+</div>
+
+<div class="creator reveal">
+<div class="av" style="background:linear-gradient(135deg,#ffb347,#b88cff)">夜</div>
+<h4>夜行观察员</h4>
+<div class="role">城市夜景 · 广州</div>
+<p>用长时间固定机位记录城市呼吸，认为最动人的画面往往发生在没人注意的凌晨。</p>
+<span class="follow">关注 · 5.1万粉</span>
+</div>
+
+<div class="creator reveal">
+<div class="av" style="background:linear-gradient(135deg,#b88cff,#ff9fb6)">绘</div>
+<h4>纸片星球</h4>
+<div class="role">动画 · 杭州</div>
+<p>独立动画人，所有作品均为手绘逐帧，保持着一年两部的稳定产出与极高的完成度。</p>
+<span class="follow">关注 · 2.9万粉</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ================= TOPICS ================= -->
+<section id="topics" style="background:linear-gradient(180deg,transparent,rgba(17,24,48,.35),transparent)">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">专题企划</div>
+<h2>我们正在进行的<em>长期项目</em></h2>
+<p>比起追逐热点，我们更愿意做需要耐心的事。以下是几个持续开放的征集计划，任何人都可以投稿参与。</p>
+</div>
+<div class="timeline">
+
+<div class="tl-item reveal">
+<div class="date">2024 — 持续进行</div>
+<h4>夜幕档案 · 城市星轨采集计划</h4>
+<p>邀请全国创作者在各自城市拍摄同一晚的星空，最终剪辑成一部跨越时区的合成长片。目前已收录来自 41 个城市的影像素材，第二季正在征集。</p>
+</div>
+
+<div class="tl-item reveal">
+<div class="date">2025 春季</div>
+<h4>三分钟 · 新人导演首发单元</h4>
+<p>专为第一次发布作品的创作者设立，不设粉丝门槛，由编辑部与社区共同推荐，优秀作品将获得首页推荐位与创作基金支持。</p>
+</div>
+
+<div class="tl-item reveal">
+<div class="date">每季度</div>
+<h4>声画互译 · 跨媒介共创实验</h4>
+<p>音乐人提交原始音轨，视觉创作者自由取材 reinterpret，每季度产出一批风格迥异的同源作品，形成一个可对比的创作图谱。</p>
+</div>
+
+<div class="tl-item reveal">
+<div class="date">全年开放</div>
+<h4>设备无差别 · 手机影像特别邀请</h4>
+<p>我们相信设备不是门槛。用手持设备完成的星轨、延时、慢动作，同样有机会进入年度精选与线下放映。</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ================= COMMUNITY ================= -->
+<section id="community">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">社区动态</div>
+<h2>这里每天都有新的<em>讨论在发生</em></h2>
+<p>评论区、创作日志、器材互助、拍摄点分享——社区不是作品的附属，而是作品开始的现场。</p>
+</div>
+
+<div class="community-grid">
+<div class="post-list reveal">
+
+<div class="post">
+<span class="pav" style="background:linear-gradient(135deg,#6b8cff,#b88cff)">岚</span>
+<div class="pc">
+<div class="phead"><b>星野阿岚</b><span>· 2 小时前 · 创作日志</span></div>
+<p>昨晚在瓦屋山试了新的间隔参数，结果意外拍到了两颗流星。参数和机位坐标都写在评论区了，欢迎自取，也欢迎告诉我你们那边的天空是什么样的。</p>
+<div class="pact"><span>♡ 328</span><span>回应 46</span><span>收藏 112</span></div>
+</div>
+</div>
+
+<div class="post">
+<span class="pav" style="background:linear-gradient(135deg,#45e0c0,#6b8cff)">声</span>
+<div class="pc">
+<div class="phead"><b>声场实验室</b><span>· 5 小时前 · 器材互助</span></div>
+<p>关于录制环境底噪：低噪录音笔加防风毛套是基础配置，但真正决定成败的是远离空调外机与变电箱。我把常用的三类户外录音场景整理成了对照表。</p>
+<div class="pact"><span>♡ 214</span><span>回应 31</span><span>收藏 89</span></div>
+</div>
+</div>
+
+<div class="post">
+<span class="pav" style="background:linear-gradient(135deg,#ffb347,#b88cff)">夜</span>
+<div class="pc">
+<div class="phead"><b>夜行观察员</b><span>· 昨天 · 拍摄点分享</span></div>
+<p>推荐一个城郊的机位：废弃水塔下方的斜坡，视东方，视野无遮挡。注意夜间车辆稀少，建议两人以上同行，带好保暖和头灯。</p>
+<div class="pact"><span>♡ 502</span><span>回应 73</span><span>收藏 240</span></div>
+</div>
+</div>
+
+<div class="post">
+<span class="pav" style="background:linear-gradient(135deg,#b88cff,#ff9fb6)">绘</span>
+<div class="pc">
+<div class="phead"><b>纸片星球</b><span>· 2 天前 · 创作日志</span></div>
+<p>新片第 1180 帧终于画完了。逐帧动画最难的部分不是体力，而是要在一千多次重复里保持同一个情绪。这次我想把节拍放慢，让观众有停顿呼吸的余地。</p>
+<div class="pact"><span>♡ 641</span><span>回应 92</span><span>收藏 301</span></div>
+</div>
+</div>
+
+<div class="post">
+<span class="pav" style="background:linear-gradient(135deg,#6b8cff,#45e0c0)">轨</span>
+<div class="pc">
+<div class="phead"><b>轨道误差</b><span>· 3 天前 · 讨论</span></div>
+<p>想问一下大家：你们会为了一个镜头等多久？我有过连续四晚在同一个位置等待云散开的经历，最后一帧都没拍到，但那四晚反而成了我最喜欢的记忆。</p>
+<div class="pact"><span>♡ 487</span><span>回应 168</span><span>收藏 76</span></div>
+</div>
+</div>
+
+</div>
+
+<div>
+<div class="side-card reveal">
+<h4>本周热榜</h4>
+<div class="rank">
+<div class="rank-item"><span class="no">1</span><span class="rt">凌晨四点的天台与十二扇窗</span><span class="rv">11.4万</span></div>
+<div class="rank-item"><span class="no">2</span><span class="rt">银河落进城市的那一夜</span><span class="rv">8.6万</span></div>
+<div class="rank-item"><span class="no">3</span><span class="rt">守星人 · 高原观测站的一天</span><span class="rv">9.7万</span></div>
+<div class="rank-item"><span class="no">4</span><span class="rt">星座之间的第九封信</span><span class="rv">7.3万</span></div>
+<div class="rank-item"><span class="no">5</span><span class="rt">频率之外 · 声音可视化实验</span><span class="rv">6.2万</span></div>
+</div>
+</div>
+
+<div class="side-card reveal">
+<h4>热门标签</h4>
+<div class="tag-cloud">
+<span>#星轨</span><span>#银河</span><span>#长时间曝光</span><span>#手绘动画</span>
+<span>#声音可视化</span><span>#城市夜景</span><span>#无人机</span><span>#延时摄影</span>
+<span>#新人首发</span><span>#手机影像</span><span>#记录片</span><span>#调色参考</span>
+</div>
+</div>
+
+<div class="side-card reveal">
+<h4>社区守则</h4>
+<p style="font-size:13px;color:var(--dim);line-height:1.8">尊重原创署名，转载前先征得同意；对作品提出具体、可执行的意见；不进行人身攻击与流量攀比；夜间外出拍摄请务必注意安全。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= PLANS ================= -->
+<section id="plans">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="eyebrow">会员计划</div>
+<h2>为认真创作的人<em>提供更长的耐心</em></h2>
+<p>会员费用会直接用于社区带宽、原创激励与专题企划。我们不承诺爆款，只承诺一个能让作品被好好对待的空间。</p>
+</div>
+
+<div class="plans">
+<div class="plan reveal">
+<h3>星空漫游者</h3>
+<div class="sub">适合刚起步的创作者</div>
+<div class="price">免费 <small>/ 长期</small></div>
+<ul>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>高清作品观看与收藏</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>每月 3 部作品上传</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>参与社区讨论</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>关注创作者与订阅更新</li>
+</ul>
+<button class="btn btn-ghost">创建账号</button>
+</div>
+
+<div class="plan hot reveal">
+<h3>轨道同行</h3>
+<div class="sub">适合持续产出的创作者</div>
+<div class="price">¥29 <small>/ 月</small></div>
+<ul>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>无限量作品上传与版本管理</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>4K / HDR 预览与源文件分发</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>专题企划优先征集</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>作品数据面板与观众画像</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>创作者认证标识</li>
+</ul>
+<button class="btn btn-primary">立即开通</button>
+</div>
+
+<div class="plan reveal">
+<h3>观测站</h3>
+<div class="sub">适合团队与工作室</div>
+<div class="price">¥99 <small>/ 月</small></div>
+<ul>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>最多 5 个子账号协作</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>团队作品集独立主页</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>联合企划与商业对接支持</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>线下放映活动名额</li>
+<li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>专属社区顾问</li>
+</ul>
+<button class="btn btn-ghost">联系合作</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+<div class="wrap">
+<div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+<div class="eyebrow" style="justify-content:center">常见问题</div>
+<h2>在开始之前，你可能想<em>先了解一下</em></h2>
+</div>
+
+<div class="faq reveal">
+<div class="faq-item">
+<button class="faq-q">我可以上传别人拍摄的作品吗？</button>
+<div class="faq-a">不可以。麻花星空MV只接受创作者本人或其正式授权的作品。上传时需勾选原创声明，如收到版权异议，我们会先下架并联系双方核实。我们尊重每一个镜头的拍摄者。</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">对设备和画质有硬性要求吗？</button>
+<div class="faq-a">没有。手机、运动相机、无人机、专业设备都可以上传。我们更看重内容与叙事，而不是分辨率。唯一的建议是：如果可能，尽量保留原始素材，以便在推荐位或线下放映时提供更高质量版本。</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">作品发布后会得到推荐吗？</button>
+<div class="faq-a">每部作品都会进入编辑部的日常浏览池。我们更倾向于推荐有完整表达、有细节、有个人视角的作品，而不是单纯的画面堆叠。新人首发单元每周更新，不设粉丝门槛。</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">会员费用到底用在哪里？</button>
+<div class="faq-a">主要分为三部分：视频存储与分发带宽、原创激励基金（用于专题企划的稿酬与创作补贴）、以及线下放映与社区活动的组织成本。我们会在每年年初公布上一年度的资金使用概况。</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">如何参与专题企划投稿？</button>
+<div class="faq-a">进入任一进行中的专题页面，点击「参与投稿」即可。投稿作品会同时出现在你的个人主页和专题合集中。部分企划有明确的拍摄主题与提交时间，请以页面说明为准。</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">社区对评论有哪些要求？</button>
+<div class="faq-a">请围绕作品本身给出具体、可操作的反馈，比如对节奏、光线、声音处理的建议。我们不欢迎单纯的嘲讽、捧杀与刷屏。严重违规会限制评论权限，但不会影响作品展示。</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section id="cta" style="padding-top:0">
+<div class="wrap">
+<div class="cta-band reveal">
+<h2>把你拍下的那片天空，留在这里</h2>
+<p>无论是一段三十秒的星轨延时，还是一部完整的纪录短片，麻花星空MV 都愿意为它留出一个位置。</p>
+<form class="cta-form" onsubmit="return subscribe(this)">
+<input type="email" placeholder="输入邮箱，接收每周精选与征集通知" required aria-label="邮箱">
+<button class="btn btn-primary" type="submit">订阅更新</button>
+</form>
+<div class="form-note" id="formNote">我们每周最多发送一封邮件，随时可以退订。</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+<div class="wrap">
+<div class="foot-grid">
+<div class="foot-brand">
+<a href="#top" class="logo">
+<span class="mark">
+<svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.6 6.6L21 11l-6.4 2.4L12 20l-2.6-6.6L3 11l6.4-2.4L12 2z" fill="#fff"/></svg>
+</span>
+麻花星空MV
+</a>
+<p>一个属于影像创作者与夜行者的社区。记录、分享、讨论，让好画面被认真对待。</p>
+<div class="foot-social">
+<a href="#" aria-label="微博"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8" stroke-linecap="round"/></svg></a>
+<a href="#" aria-label="微信"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="3"/><path d="M8 11h.01M12 11h.01M16 11h.01" stroke-linecap="round"/></svg></a>
+<a href="#" aria-label="B站"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M7 3l2 3M17 3l-2 3" stroke-linecap="round"/></svg></a>
+<a href="#" aria-label="邮箱"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+</div>
+</div>
+<div class="foot-col">
+<h5>浏览</h5>
+<a href="#works">作品广场</a>
+<a href="#creators">创作者</a>
+<a href="#topics">专题企划</a>
+<a href="#community">社区动态</a>
+</div>
+<div class="foot-col">
+<h5>创作</h5>
+<a href="#cta">上传作品</a>
+<a href="#plans">会员计划</a>
+<a href="#topics">投稿指南</a>
+<a href="#faq">常见问题</a>
+</div>
+<div class="foot-col">
+<h5>关于</h5>
+<a href="#">社区守则</a>
+<a href="#">版权说明</a>
+<a href="#">联系我们</a>
+<a href="#">加入我们</a>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© 2025 麻花星空MV · 保留所有权利</span>
+<div class="links">
+<a href="#">用户协议</a>
+<a href="#">隐私政策</a>
+<a href="#">内容声明</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+/* ========== 星空背景生成 ========== */
+(function(){
+  const field = document.getElementById('starfield');
+  const count = 110;
+  let html = '';
+  for(let i=0;i<count;i++){
+    const x = (Math.random()*100).toFixed(2);
+    const y = (Math.random()*100).toFixed(2);
+    const size = (Math.random()*2+0.6).toFixed(2);
+    const dur = (Math.random()*4+2.6).toFixed(2);
+    const delay = (Math.random()*6).toFixed(2);
+    const max = (Math.random()*0.7+0.2).toFixed(2);
+    html += `<span class="star" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;--dur:${dur}s;--delay:${delay}s;--max:${max};"></span>`;
+  }
+  field.innerHTML = html;
+})();
+
+/* ========== 移动端菜单 ========== */
+(function(){
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){
+    links.classList.toggle('show');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('show'); });
+  });
+})();
+
+/* ========== 顶部滚动状态 ========== */
+(function(){
+  const bar = document.getElementById('topbar');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 20){
+      bar.style.background = 'rgba(5,8,16,.9)';
+    }else{
+      bar.style.background = 'rgba(7,10,20,.72)';
+    }
+  }, {passive:true});
+})();
+
+/* ========== 滚动渐显 ========== */
+(function(){
+  const items = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  items.forEach(function(el){ io.observe(el); });
+})();
+
+/* ========== 数字滚动 ========== */
+(function(){
+  const nums = document.querySelectorAll('[data-count]');
+  function animate(el){
+    const target = parseInt(el.getAttribute('data-count'),10);
+    const dur = 1600;
+    const start = performance.now();
+    function step(now){
+      const p = Math.min((now-start)/dur,1);
+      const eased = 1 - Math.pow(1-p,3);
+      let val = Math.floor(target*eased);
+      if(target >= 10000){
+        el.textContent = val >= 10000 ? (val/10000).toFixed(1)+'万+' : val.toLocaleString();
+      }else{
+        el.textContent = val.toLocaleString();
+      }
+      if(p<1) requestAnimationFrame(step);
+      else{
+        if(target >= 10000) el.textContent = (target/10000).toFixed(1).replace('.0','')+'万+';
+        else el.textContent = target.toLocaleString();
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)){
+    nums.forEach(animate);
+    return;
+  }
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ animate(en.target); io.unobserve(en.target); }
+    });
+  }, {threshold:0.4});
+  nums.forEach(function(n){ io.observe(n); });
+})();
+
+/* ========== 栏目筛选交互 ========== */
+(function(){
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(x){ x.classList.remove('active'); });
+      c.classList.add('active');
+    });
+  });
+})();
+
+/* ========== FAQ 手风琴 ========== */
+(function(){
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item){
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function(){
+      const isOpen = item.classList.contains('open');
+      items.forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+  if(items.length) items[0].classList.add('open');
+})();
+
+/* ========== 播放按钮轻交互 ========== */
+(function(){
+  const btn = document.getElementById('playBtn');
+  if(!btn) return;
+  let playing = false;
+  btn.addEventListener('click', function(){
+    playing = !playing;
+    btn.innerHTML = playing
+      ? '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
+      : '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  });
+})();
+
+/* ========== 订阅表单 ========== */
+function subscribe(form){
+  const note = document.getElementById('formNote');
+  const input = form.querySelector('input');
+  const value = input.value.trim();
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  if(!ok){
+    note.textContent = '邮箱格式似乎不太对，请检查后再试一次。';
+    note.style.color = '#ff9fb6';
+    return false;
+  }
+  note.textContent = '订阅成功，感谢你愿意和我们一起看星星。';
+  note.style.color = '#45e0c0';
+  input.value = '';
+  return false;
+}
+
+/* ========== 平滑锚点补偿固定头部 ========== */
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      const id = a.getAttribute('href');
+      if(id === '#' || id.length < 2) return;
+      const el = document.querySelector(id);
+      if(!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - 78;
+      window.scrollTo({top: top, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+  </html>
